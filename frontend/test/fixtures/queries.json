@@ -1,0 +1,36 @@
+{
+    "query1":{"WHERE": {"IS": {"courses_dept": "cpsc"} }, "OPTIONS": {"COLUMNS": ["courses_dept", "courses_id"], "ORDER": "courses_id"} },
+    "and":{"WHERE":{"AND":[{"GT":{"courses_avg":80}},{"LT":{"courses_id":148}}]},"OPTIONS":{"COLUMNS":["courses_avg","courses_dept","courses_fail","courses_id"],"ORDER":{"dir":"DOWN","keys":["courses_avg"]}}},
+    "room1": {"WHERE":{"LT":{"rooms_lat":13}},"OPTIONS":{"COLUMNS":["rooms_fullname","rooms_lat","rooms_name"],"ORDER":{"dir":"DOWN","keys":["rooms_lat","rooms_number"]}}},
+    "course1": {"WHERE":{"NOT":{"OR":[{"LT":{"courses_avg":95}},{"LT":{"courses_pass":0}}]}},"OPTIONS":{"COLUMNS":["courses_dept","courses_instructor","a"],"ORDER":"courses_instructor"},"TRANSFORMATIONS":{"GROUP":["courses_avg","courses_dept","courses_instructor"],"APPLY":[{"a":{"MAX":"courses_avg"}}]}},
+    "course2": {"WHERE":{"NOT":{"LT":{"courses_avg":98}}},"OPTIONS":{"COLUMNS":["courses_avg","courses_dept"],"ORDER":{"dir":"DOWN","keys":["courses_avg","courses_dept"]}}},
+    "course3": {"WHERE":{"NOT":{"LT":{"courses_avg":98}}},"OPTIONS":{"COLUMNS":["courses_avg","courses_dept","summer"],"ORDER":{"dir":"DOWN","keys":["courses_avg","summer"]}},"TRANSFORMATIONS":{"GROUP":["courses_avg","courses_dept"],"APPLY":[{"summer":{"MAX":"courses_avg"}}]}},
+    "course4":  {"WHERE":{"AND":[{"NOT":{"LT":{"courses_avg":98}}},{"LT":{"courses_avg":97}}]},"OPTIONS":{"COLUMNS":["courses_avg","courses_dept","summer"],"ORDER":{"dir":"DOWN","keys":["courses_avg","summer"]}},"TRANSFORMATIONS":{"GROUP":["courses_avg","courses_dept"],"APPLY":[{"summer":{"MAX":"courses_avg"}}]}},
+    "course5": {"WHERE":{"OR":[{"GT":{"courses_avg":98}},{"GT":{"courses_year":9000}}]},"OPTIONS":{"COLUMNS":["courses_avg","courses_dept","summer","bobo"],"ORDER":{"dir":"DOWN","keys":["courses_avg","summer"]}},"TRANSFORMATIONS":{"GROUP":["courses_avg","courses_dept"],"APPLY":[{"summer":{"MAX":"courses_avg"}},{"bobo":{"AVG":"courses_year"}}]}},
+    "course6": {"WHERE":{"GT":{"courses_avg":98}},"OPTIONS":{"COLUMNS":["courses_avg","courses_dept","summer","bobo"],"ORDER":{"dir":"DOWN","keys":["courses_avg","summer"]}},"TRANSFORMATIONS":{"GROUP":["courses_avg","courses_dept"],"APPLY":[{"summer":{"MAX":"courses_avg"}},{"bobo":{"AVG":"courses_year"}}]}},
+    "course7":   {"WHERE":{"GT":{"courses_avg":98}},"OPTIONS":{"COLUMNS":["courses_audit","courses_avg","courses_dept","courses_fail","courses_id","courses_instructor","courses_pass","courses_title","courses_uuid","courses_year"],"ORDER":{"dir":"DOWN","keys":["courses_avg"]}}},
+    "course8":  {"WHERE":{"GT":{"courses_avg":98}},"OPTIONS":{"COLUMNS":["courses_audit","courses_avg","courses_dept","courses_fail","courses_id","courses_instructor","courses_pass","courses_title","courses_uuid","courses_year","bobo","sam"],"ORDER":{"dir":"DOWN","keys":["courses_avg"]}},"TRANSFORMATIONS":{"GROUP":["courses_audit","courses_avg","courses_dept","courses_fail","courses_id","courses_instructor","courses_pass","courses_title","courses_uuid","courses_year"],"APPLY":[{"bobo":{"SUM":"courses_avg"}},{"sam":{"SUM":"courses_year"}}]}},
+    "room3":     {"WHERE":{"OR":[{"GT":{"rooms_seats":140}},{"LT":{"rooms_seats":5}}]},"OPTIONS":{"COLUMNS":["rooms_seats","bobo"],"ORDER":{"dir":"UP","keys":["rooms_seats"]}},"TRANSFORMATIONS":{"GROUP":["rooms_address","rooms_fullname","rooms_furniture","rooms_href","rooms_lat","rooms_lon","rooms_name","rooms_number","rooms_seats","rooms_shortname","rooms_type"],"APPLY":[{"bobo":{"COUNT":"rooms_seats"}}]}},
+    "room4":     {"WHERE":{"OR":[{"GT":{"rooms_seats":140}},{"LT":{"rooms_seats":5}}]},"OPTIONS":{"COLUMNS":["rooms_address","rooms_fullname","rooms_furniture","rooms_href","rooms_lat","rooms_lon","rooms_name","rooms_number","rooms_seats","rooms_shortname","rooms_type","bobo"],"ORDER": {"dir":"UP","keys":["rooms_seats"]}},"TRANSFORMATIONS":{"GROUP":["rooms_address","rooms_fullname","rooms_furniture","rooms_href","rooms_lat","rooms_lon","rooms_name","rooms_number","rooms_seats","rooms_shortname","rooms_type"],"APPLY":[{"bobo":{"COUNT":"rooms_seats"}}]}},
+    "room5":   {"WHERE":{"OR":[{"GT":{"rooms_seats":140}},{"LT":{"rooms_seats":5}}]},"OPTIONS":{"COLUMNS":["rooms_address","rooms_fullname","rooms_furniture","rooms_href","rooms_lat","rooms_lon","rooms_name","rooms_number","rooms_seats","rooms_shortname","rooms_type","bobo"],"ORDER": {"dir":"DOWN","keys":["rooms_seats"]}},"TRANSFORMATIONS":{"GROUP":["rooms_address","rooms_fullname","rooms_furniture","rooms_href","rooms_lat","rooms_lon","rooms_name","rooms_number","rooms_seats","rooms_shortname","rooms_type"],"APPLY":[{"bobo":{"COUNT":"rooms_seats"}}]}},
+    "room6": {"WHERE":{"OR":[{"NOT":{"LT":{"rooms_seats":140}}},{"LT":{"rooms_seats":5}}]},"OPTIONS":{"COLUMNS":["rooms_address","rooms_fullname","rooms_furniture","rooms_href","rooms_lat","rooms_lon","rooms_name","rooms_number","rooms_seats","rooms_shortname","rooms_type","bobo"], "ORDER":{"dir":"DOWN","keys":["rooms_address","rooms_fullname","rooms_furniture","rooms_href","rooms_lat","rooms_lon","rooms_name","rooms_number","rooms_seats","rooms_shortname","rooms_type","bobo"]}},"TRANSFORMATIONS":{"GROUP":["rooms_address","rooms_fullname","rooms_furniture","rooms_href","rooms_lat","rooms_lon","rooms_name","rooms_number","rooms_seats","rooms_shortname","rooms_type"],"APPLY":[{"bobo":{"COUNT":"rooms_seats"}}]}},
+    "room7":     {"WHERE":{"NOT":{"NOT":{"LT":{"courses_avg":100}}}},"OPTIONS":{"COLUMNS":["courses_avg","bobo"],"ORDER":{"dir":"UP","keys":["bobo"]}},"TRANSFORMATIONS":{"GROUP":["courses_avg"],"APPLY":[{"bobo":{"MAX":"courses_avg"}}]}},
+    "course9": {"WHERE":{"AND":[{"IS":{"courses_dept":"math"}},{"GT":{"courses_avg":98}}]},"OPTIONS":{"COLUMNS":["courses_dept"],"ORDER":{"dir":"UP","keys":["courses_dept"]}}},
+    "course10":  {"WHERE":{"OR":[{"IS":{"courses_dept":"math"}},{"EQ":{"courses_avg":90}}]},"OPTIONS":{"COLUMNS":["courses_avg","courses_dept"],"ORDER":{"dir":"DOWN","keys":["courses_avg","courses_dept"]}}},
+    "course11":     {"WHERE":{"NOT":{"LT":{"courses_avg":98}}},"OPTIONS":{"COLUMNS":["courses_avg"],"ORDER":{"dir":"UP","keys":["courses_avg"]}},"TRANSFORMATIONS":{"GROUP":["courses_avg"],"APPLY":[]}},
+    "course12":     {"WHERE":{"NOT":{"OR":[{"NOT":{"LT":{"courses_avg":98}}},{"LT":{"courses_avg":97}}]}},"OPTIONS":{"COLUMNS":["courses_avg"],"ORDER":{"dir":"UP","keys":["courses_avg"]}},"TRANSFORMATIONS":{"GROUP":["courses_avg"],"APPLY":[]}},
+    "course13":     {"WHERE":{"GT":{"courses_avg":98}},"OPTIONS":{"COLUMNS":["courses_avg"]}},
+    "course14":     {"WHERE":{"GT":{"courses_avg":97}},"OPTIONS":{"COLUMNS":["courses_title","overall"]},"TRANSFORMATIONS":{"GROUP":["courses_title"],"APPLY":[{"overall":{"AVG":"courses_avg"}}]}},
+    "room8":     {"WHERE":{"AND":[{"GT":{"rooms_seats":300}},{"IS":{"rooms_furniture":"*Tables*"}}]},"OPTIONS":{"COLUMNS":["rooms_shortname","maxseats"],"ORDER":{"dir":"DOWN","keys":["maxseats"]}},"TRANSFORMATIONS":{"GROUP":["rooms_shortname"],"APPLY":[{"maxseats":{"COUNT":"rooms_seats"}}]}},
+
+
+
+
+
+
+
+
+
+
+
+    }
