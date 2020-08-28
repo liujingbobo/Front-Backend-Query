@@ -1,0 +1,44 @@
+{
+    "title": "SELECT dept, avg WHERE avg > 97",
+    "query": {
+        "WHERE": {
+            "AND": [
+                {
+                    "IS": {
+                        "courses_dept": "*sh*"
+                    }
+                },
+                {
+                    "GT": {
+                        "courses_avg": 75
+                    }
+                }
+            ]
+        },
+        "OPTIONS": {
+            "COLUMNS": [
+                "courses_instructor",
+                "sum"
+            ],
+            "ORDER": {
+                "dir": "DOWN",
+                "keys": [
+                    "sum"
+                ]
+            }
+        },
+        "TRANSFORMATIONS": {
+            "GROUP": [
+                "courses_instructor"
+            ],
+            "APPLY": [
+                {
+                    "sum": {
+                        "SUM": "courses_avg"
+                    }
+                }
+            ]
+        }
+    },
+    "isQueryValid": true,
+    "result": [{"courses_instructor":"","sum":2192.85},{"courses_instructor":"martell, steve","sum":360.6},{"courses_instructor":"pauly, daniel;trites, andrew","sum":347.71},{"courses_instructor":"pauly, daniel","sum":259.85},{"courses_instructor":"sumaila, ussif rashid","sum":178.14},{"courses_instructor":"cheung, wai lung;christensen, villy;close, david;mcallister, murdoch;pauly, daniel;pitcher, tony;sumaila, ussif rashid;trites, andrew;vincent, amanda","sum":174.56},{"courses_instructor":"mcallister, murdoch","sum":169},{"courses_instructor":"cheung, wai lung;christensen, villy;close, david;pauly, daniel;pitcher, tony;sumaila, ussif rashid;trites, andrew;vincent, amanda;walters, carl john","sum":88.5},{"courses_instructor":"cheung, wai lung;christensen, villy;close, david;mcallister, murdoch;pauly, daniel;pitcher, tony;sumaila, ussif rashid;trites, andrew;vincent, amanda;walters, carl john","sum":85.17}]}
